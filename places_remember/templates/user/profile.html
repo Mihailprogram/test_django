@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+<div>
+    <div class="topcorner">
+        <a href="{% url 'account_logout' %}"  class="btn btn-primary" style="margin-top:10px; margin-right:10px;">
+            {% trans "Выход" %}</a>
+    </div>
+    <div style="margin-left:1px;">
+        <ul>
+        <img src="{{ photo }}" style="margin-top:10px;">
+        
+        {{firs_name}}
+        {{last_name}} 
+    </div>
+</div>
+<hr></hr>
+<ul>
+<br></br>
+<a class="btn btn-primary" role="button" href={%url 'places:map'%}> Добавить воспоминания</a>
+<br></br>
+</ul>
+{%if all_places%}
+    <h1>Ваши любимые места</h1>
+    <hr width="1000px;"  > 
+    {%for i in all_places%}
+            <div id="map{{i.id}}" style="width: 600px; height: 400px; margin-bottom: 40px;margin-left:20px;"></div>
+            <script src="https://api-maps.yandex.ru/2.1/?apikey=e45b87ef-a4d0-46c4-9803-0320acdd18d4&lang=ru_RU" type="text/javascript"></script>
+            <script type="text/javascript">
+            ymaps.ready(init);
+            function init() {
+            var myMap = new ymaps.Map("map{{i.id}}", {
+                center: [{{i.latitude}}, {{i.longitude}}],
+                zoom: 10
+            });
+            var myPlacemark = new ymaps.Placemark([{{i.latitude}}, {{i.longitude}}],);
+            myMap.geoObjects.add(myPlacemark);
+            }
+            
+            </script>
+            <ul>
+                <li> Название {{i.name}}</li>
+                <li> Коментарий {{i.comment}}</li>   
+            </ul> 
+        <hr width="1000px;"  > 
+            
+
+    {% endfor %}
+{%else%}
+<h1>У вас пока нет воспоминаний</h1>
+{% endif %}
+{% endblock %}
+

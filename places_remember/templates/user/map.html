@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<ul>
+
+<h2 style="margin-top:20px;">Добавить воспоминание</h2>
+
+<div id="map" style="width: 600px; height: 400px;"></div>
+<br></br>
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  
+  {{form.as_p}}
+  <button class="btn btn-primary" type="submit">Добавить</button>
+</form>
+
+<script src="https://api-maps.yandex.ru/2.1/?apikey=e45b87ef-a4d0-46c4-9803-0320acdd18d4&lang=ru_RU" type="text/javascript"></script>
+<script type="text/javascript">
+  
+ymaps.ready(init);
+
+function init() {
+  var myMap = new ymaps.Map("map", {
+    center: [55.76, 37.64],
+    zoom: 10
+  });
+
+  var myPlacemark;
+
+  myMap.events.add('click', function (e) {
+    if (myPlacemark) {
+      myMap.geoObjects.remove(myPlacemark);
+    }
+    var coords = e.get('coords');
+    myPlacemark = new ymaps.Placemark(coords, {
+      hintContent: 'Это метка',
+      balloonContent: 'Нажмите на кнопку чтобы добавить метку'
+    }, {
+      draggable: true
+    });
+    myMap.geoObjects.add(myPlacemark);
+
+    document.getElementById('id_latitude').value = coords[0];
+    document.getElementById('id_longitude').value = coords[1];
+    
+    // Отправляем форму на сервер
+    document.getElementById('PlaceForm').submit();
+  });
+}
+</script>
+{% endblock %}

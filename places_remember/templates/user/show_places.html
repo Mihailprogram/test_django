@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div id="map" style="width: 600px; height: 400px"></div>
+<script src="https://api-maps.yandex.ru/2.1/?apikey=e45b87ef-a4d0-46c4-9803-0320acdd18d4&lang=ru_RU" type="text/javascript"></script>
+<script type="text/javascript">
+    ymaps.ready(init);
+    function init() {
+      var myMap = new ymaps.Map("map", {
+        center: {{ coordinates }},
+        zoom: 10
+      });
+      var myPlacemark = new ymaps.Placemark({{ coordinates }}, {
+        hintContent: 'Метка',
+        balloonContent: 'Название {{maps.name}}. Комментарий {{maps.comment}}'
+      });
+      myMap.geoObjects.add(myPlacemark);
+    }
+  </script>
+{% endblock %}

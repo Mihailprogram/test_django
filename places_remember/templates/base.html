@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <link rel="stylesheet" href="{% static "css/bootstrap.min.css"%}"> 
+    <title>
+        {% block title %}
+       Здесь могло быть название страницы
+        
+      {% endblock %}
+    </title>
+    <style type="text/css">
+        .topcorner{
+          position:absolute;
+          top:0;
+          right:0;
+         }
+         .map-container {
+            margin-bottom: 20px;
+        }
+         .center-screen {
+           display: flex;
+           flex-direction: column;
+           justify-content: center;
+           align-items: center;
+           text-align: center;
+           min-height: 10vh;
+         }
+         
+    </style>
+</head>
+<body>
+
+    <body>
+        <main>
+          {% block content %}
+            Здесь мог быть контент
+          {% endblock %}
+        </main>
+        
+        
+      </body>
+</html>
