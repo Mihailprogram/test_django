@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.vk',
-    'yandex_maps',
+    # 'yandex_maps',
 ]
 
 MIDDLEWARE = [
@@ -141,3 +141,13 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SITE_ID = 1
+
+SOCIALACCOUNT_PROVIDERS = {
+    'vk': {
+            'APP': {
+                'client_id': '51626348',
+                'secret': '1ibRyEZyqL7RrVUuOeJA',
+                'key': ''
+            }
+    }
+}
