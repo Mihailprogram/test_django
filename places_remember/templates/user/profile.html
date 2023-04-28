@@ -31,7 +31,8 @@
             function init() {
             var myMap = new ymaps.Map("map{{i.id}}", {
                 center: [{{i.latitude}}, {{i.longitude}}],
-                zoom: 10
+                zoom: 15,
+                controls: ['zoomControl']
             });
             var myPlacemark = new ymaps.Placemark([{{i.latitude}}, {{i.longitude}}],);
             myMap.geoObjects.add(myPlacemark);
