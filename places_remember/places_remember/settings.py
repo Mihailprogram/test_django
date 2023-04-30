@@ -141,8 +141,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SITE_ID = 1
 
+LOGIN_REDIRECT_URL = '/accounts/profile/'
+
 SOCIALACCOUNT_PROVIDERS = {
     'vk': {
+            'SCOPE': ['email', 'friends', 'status'],
             'APP': {
                 'client_id': '51626348',
                 'secret': '1ibRyEZyqL7RrVUuOeJA',

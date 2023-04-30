@@ -36,13 +36,3 @@ def map_view(request):
         form = PlaceForm()
 
     return render(request, 'user/map.html', {'form': form})
-
-
-def show_places(request, id):
-    maps = get_object_or_404(Place, id=id)
-    coordinates = [maps.latitude, maps.longitude]
-    context = {
-        'maps': maps,
-        'coordinates': coordinates,
-    }
-    return render(request, 'user/show_places.html', context)
