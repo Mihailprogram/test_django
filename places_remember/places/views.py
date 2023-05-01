@@ -1,7 +1,8 @@
-from django.shortcuts import redirect, render
 from allauth.socialaccount.models import SocialAccount
-from .models import Place
+from django.shortcuts import redirect, render
+
 from .forms import PlaceForm
+from .models import Place
 
 # Create your views here.
 
