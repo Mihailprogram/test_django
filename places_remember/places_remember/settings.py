@@ -143,10 +143,10 @@ SITE_ID = 1
 
 LOGIN_REDIRECT_URL = '/accounts/profile/'
 
-ALLOWED_HOSTS = [
-    'www.places_remember.pythonanywhere.com',
-    'places_remember.pythonanywhere.com',
-] 
+# ALLOWED_HOSTS = [
+#     'www.places_remember.pythonanywhere.com',
+#     'places_remember.pythonanywhere.com',
+# ] 
 
 SOCIALACCOUNT_PROVIDERS = {
     'vk': {
