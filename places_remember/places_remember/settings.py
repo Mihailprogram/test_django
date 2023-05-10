@@ -151,7 +151,7 @@ LOGIN_REDIRECT_URL = '/accounts/profile/'
 
 SOCIALACCOUNT_PROVIDERS = {
     'vk': {
-            'SCOPE': ['friends', 'status'],
+            'SCOPE': ['email', 'friends', 'status'],
             'APP': {
                 'client_id': '51626348',
                 'secret': '1ibRyEZyqL7RrVUuOeJA',
